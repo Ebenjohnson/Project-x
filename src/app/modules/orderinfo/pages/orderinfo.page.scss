@@ -1,0 +1,29 @@
+.order-status {
+	text-transform: capitalize;
+}
+
+.status-title {
+	float: none;
+}
+
+.sidebar {
+	.main-block{
+		.chef-detail{
+			li{
+				padding: 13px !important;
+				&:nth-child(odd){
+					background: #fff;
+				}
+				&:nth-child(even){
+					background: #f5f4f2;
+				}
+			}
+		}
+	}
+}
+
+.modal-content{
+	.bg-theme{
+		background: #f95424;
+	}
+}

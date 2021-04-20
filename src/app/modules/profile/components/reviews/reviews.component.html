@@ -1,0 +1,16 @@
+<div class="panel rating-box">
+    <div class="panel-heading">
+        <h4 class="panel-title">{{reviewsResponse.total}} Reviews</h4>
+    </div>
+    <div class="panel-body">
+        <div class="bg-white p-1" *ngFor="let review of reviewsResponse.data">
+            <h5 class="d-flex align-items-center">{{review.user.name}}
+                <span class="text-muted">{{ review.created_at | date }}</span>
+                <span class="rate">
+                    <app-ratings [ratings]="review.rating"></app-ratings>
+                </span>
+            </h5>
+            <p>{{review.review}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,207 @@
+<div id="page_my_order">
+	<div class="site-wrapper animsition" data-animsition-in="fade-in" data-animsition-out="fade-out">
+		<app-header></app-header>
+		<div class="page-wrapper">
+			<!-- start: Inner page hero -->
+			<!-- <section class="bg-image space-md" data-image-src="assets/images/image01.jpg">
+				<div class="profile">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12 col-sm-4  col-lg-4 profile-img">
+								<h1 class="font-white">Your Orders</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section> -->
+			<div class="breadcrumb mb-4">
+				<div class="container">
+					<ul>
+						<li><a [routerLink]="['/']" class="active">Home</a></li>
+						<li><a [routerLink]="">My Orders</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- //results show -->
+			<section class="restaurants-page">
+				<div class="container">
+					<div class="row">
+						<!-- <div class="col-xs-12 col-sm-5 col-md-5 col-lg-3">
+							<div class="sidebar clearfix m-b-20">
+								<div class="main-block">
+									<ul class="nav nav-tabs d-block border-0" id="myTab" role="tablist">
+										<li class="nav-item d-block border-0">
+											<a class="nav-link" [ngClass]="currentTab == TAB_PENDING ? 'active' : ''" id="pending-orders-tab" data-toggle="tab" href="#pending_orders" role="tab" aria-controls="home" aria-selected="true">Pending Orders</a>
+										</li>
+										<li class="nav-item d-block border-0">
+											<a class="nav-link" [ngClass]="currentTab == TAB_PAST ? 'active' : ''" id="past-order-tab" data-toggle="tab" href="#past_order" role="tab" aria-controls="profile" aria-selected="false">Past Orders</a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div> -->
+						<div class="col-lg-10 col-md-10 col-sm-12 mx-auto">
+							<div class="tab-content" id="nav-tabContent" infiniteScroll (scrolled)="onScroll()">
+								<div class="tab-pane fade show active" id="pending_orders" role="tabpanel" aria-labelledby="pending-orders-tab">
+									<div *ngIf="noResult && !loading" class="empty_view mx-auto">
+										<div class="img_box">
+											<img src="assets/images/no_search.png" class="img-fluid">
+										</div>
+										<div class="text_box">
+											<h1 class="text-center">Oops! No Order yet.</h1>
+											<p class="text-center">We can't find any active order for you</p>
+										</div>
+									</div>
+
+									<div *ngIf="loading" class="d-flex justify-content-center loader">
+										<div class="spinner-border" role="status">
+											<span class="sr-only">Loading...</span>
+										</div>
+									</div>
+									<div *ngIf="!loading && !noResult">
+										<div *ngFor="let order of orders" class="bg-gray restaurant-entry">
+											<div class="row">
+												<div class="col-sm-12 col-md-12 col-lg-8 text-xs-center text-sm-left">
+													<div class="entry-logo">
+														<a class="img-fluid" [routerLink]="['/orderinfo', order.id]"><img [src]="order.store.image_url"></a>
+													</div>
+													<div class="entry-dscr">
+														<h5 class="d-flex"><a>{{order.store.name}}</a>
+															<span class="ml-auto"> {{currency}} {{order.total}}</span>
+														</h5>
+														<span class="">Order #{{order.id}} <span class="px-1">|</span>{{order.payment_method.title}}</span>
+														<br>
+														<div class="d-flex py-2">
+															<span class="d-block ">{{formatDateTime(order.createdAt)}}</span>
+															<!-- <a class="ml-auto review_btn" href="#" data-toggle="modal" data-target="#reviewModal">
+																Review
+															</a> -->
+														</div>
+
+													</div>
+												</div>
+												<div class="col-sm-12 col-md-12 col-lg-4 text-center">
+													<div class="right-content bg-white">
+														<div class="right-review">
+															<app-ratings [ratings]="order.store.ratings"></app-ratings>
+															<p class="order-status">{{order.status}}</p> <a [routerLink]="['/orderinfo', order.id]" class="btn theme-btn-dash">View Order</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+								<!-- <div class="tab-pane fade" id="past_order" role="tabpanel" aria-labelledby="past-order-tab">
+									<div class="bg-gray restaurant-entry">
+										<div class="row">
+											<div class="col-sm-12 col-md-12 col-lg-8 text-xs-center text-sm-left">
+												<div class="entry-logo">
+													<a class="img-fluid" href="#"><img src="images/logo7.png" alt="Food logo"></a>
+												</div>
+												<div class="entry-dscr">
+													<h5 class="d-flex"><a>Maenaam Thai Restaurant</a>
+														<span class="ml-auto"> $ 241</span>
+													</h5>
+													<span class="">Order #214511 <span class="px-1">|</span> Cash on Delivery</span>
+													<br>
+													<div class="d-flex py-2  ">
+														<span class="d-block ">10 May 2020 11:40 am</span>
+														
+														<a class="ml-auto review_btn" href="#" data-toggle="modal" data-target="#exampleModalCenter">
+															Review
+														</a>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-md-12 col-lg-4 text-center">
+												<div class="right-content bg-white">
+													<div class="right-review">
+														<div class="rating-block"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
+														<p>Delivered</p> <a href="order_info.html" class="btn theme-btn-dash">View Order</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<!-- Modal -->
+			<div class="modal fade rateing_modal" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModal" aria-hidden="true" style="padding: 0;">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-12">
+									<div class="panel rating-box border-0 mb-0">
+										<div class="img_box text-center mt-3">
+											<img src="assets/images/reting-logo.png">
+										</div>
+										<div class="panel-heading px-3 m-t-30 mb-3 text-center">
+											<h4 class="panel-title">Rate and Review
+												<br>Maenaam Thai Restaurant
+											</h4>
+										</div>
+
+										<div class="rating_icon_container px-4 text-center">
+											<span [ngClass]="ratingIcon1 ? 'rating_icon active' : 'rating_icon'" (click)="toggleRatingIcon1()">
+												<i class="fa fa-star-o" aria-hidden="true"></i>
+												<i class="fa fa-star" aria-hidden="true"></i>
+											</span>
+											<span [ngClass]="ratingIcon2 ? 'rating_icon active' : 'rating_icon'" (click)="toggleRatingIcon2()">
+												<i class="fa fa-star-o" aria-hidden="true"></i>
+												<i class="fa fa-star" aria-hidden="true"></i>
+											</span>
+											<span [ngClass]="ratingIcon3 ? 'rating_icon active' : 'rating_icon'" (click)="toggleRatingIcon3()">
+												<i class="fa fa-star-o" aria-hidden="true"></i>
+												<i class="fa fa-star" aria-hidden="true"></i>
+											</span>
+											<span [ngClass]="ratingIcon4 ? 'rating_icon active' : 'rating_icon'" (click)="toggleRatingIcon4()">
+												<i class="fa fa-star-o" aria-hidden="true"></i>
+												<i class="fa fa-star" aria-hidden="true"></i>
+											</span>
+											<span [ngClass]="ratingIcon5 ? 'rating_icon active' : 'rating_icon'" (click)="toggleRatingIcon5()">
+												<i class="fa fa-star-o" aria-hidden="true"></i>
+												<i class="fa fa-star" aria-hidden="true"></i>
+											</span>
+										</div>
+
+
+										<div class="panel-body pb-0">
+											<div class="form-horizontal contact-form" role="form">
+												<fieldset>
+													<div class="row form-group">
+														<div class="col-xs-12 col-lg-12">
+															<textarea class="form-control p-3" id="message" name="message" rows="3" placeholder="Write your experience about food"></textarea>
+														</div>
+													</div>
+													<div class="row btn_container mb-0 form-group px-3">
+														<button class="btn btn-lg theme-btn mx-auto" data-dismiss="modal" type="submit">Rate now</button>
+													</div>
+												</fieldset>
+											</div>
+
+										</div>
+
+									</div>
+									<!--//panel-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<app-footer></app-footer>
+	</div>
+</div>

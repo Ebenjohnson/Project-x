@@ -1,0 +1,125 @@
+<div id="body">
+	<div class="site-wrapper animsition" data-animsition-in="fade-in" data-animsition-out="fade-out">
+		<app-header></app-header>
+		<!-- banner part starts -->
+		<section class="hero bg-image">
+			<div class="hero-inner">
+				<div class="container text-center hero-text font-white">
+					<h1 i18n="@@homeIntroductionHeader">Order Delivery & Take-Out </h1>
+					<h5 class="font-white space-xs" i18n="@@homeIntroductionSubHeader">Find stores, specials, and coupons for free</h5>
+					<div class="banner-form">
+						<form class="form-inline mx-auto">
+							<div class="form-group mb-0 mx-auto mx-md-2">
+								<label class="sr-only" for="exampleInputAmount" i18n="@@homeSearchPlaceholder">I would like to eat....</label>
+								<div class="form-group">
+									<input type="text" class="form-control form-control-lg px-4 py-2" id="searchTerm" name="searchTerm" i18n-placeholder="@@homeSearchPlaceholder" placeholder="I would like to eat...." [(ngModel)]="searchTerm" /> </div>
+							</div>
+							<button (click)="gotoSearch()" type="button" class="btn theme-btn btn-lg  mx-auto py-2 px-4" i18n="@@homeSearchButton">Search</button>
+						</form>
+					</div>
+					<div class="steps">
+						<div class="step-item step1">
+							 <img src="assets/images/easy_step_order_icon_1.svg" alt="" style="width: 34px">
+							<h4><span>1. </span>Choose Location</h4>
+						</div>
+						<!-- end:Step -->
+						<div class="step-item step2">
+							 <img src="assets/images/easy_step_order_icon_2.svg" alt="" style="width: 34px">
+							<h4><span>2. </span>
+								<ng-container i18n="@@homeSteps2">Order Item</ng-container>
+							</h4>
+						</div>
+						<!-- end:Step -->
+						<div class="step-item step3">
+						 <img src="assets/images/easy_step_order_icon_3.svg" alt="" style="width: 34px">
+							<h4><span>3. </span>
+								<ng-container i18n="@@homeSteps3">Eat Delivered</ng-container>
+							</h4>
+						</div>
+						<!-- end:Step -->
+					</div>
+					<!-- end:Steps -->
+				</div>
+			</div>
+			<!--end:Hero inner -->
+		</section>
+		<!-- banner part ends -->
+		<!-- location match part starts -->
+		<div class="location-match text-center">
+			<div class="container"> <span>
+					<ng-container i18n="@@homeRestaurantCount">{{ locationRestaurantCount }} stores matched your location: </ng-container>
+					<a data-toggle="modal" data-target="#add_address_modal" style="cursor: pointer;"><span class="primary-color">{{locationText}}</span></a>
+				</span>
+			</div>
+		</div>
+		<!-- location match part ends -->
+
+		<home-categories></home-categories>
+
+		<home-popular></home-popular>
+
+		<home-howitworks></home-howitworks>
+
+		<home-featured></home-featured>
+
+		<!--			Add Address Modal start -->
+		<div class="modal fade add_address_modal" id="add_address_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content border-0 overflow-hidden">
+					<div class="modal-body p-0">
+						<div class="container-fluid p-0">
+							<div class="widget border-0 bg-white m-0">
+								<div class="widget-body p-0">
+									<form>
+										<div class="search_box">
+											<div class="d-flex form_container mb-0">
+												<div class="input-group form-group w-100 mb-0 align-items-center">
+													<div class="input-group-prepend ">
+														<div class="input-group-text">
+															<i class="zmdi zmdi-search"></i>
+														</div>
+													</div>
+													<app-google-places [autocompleteInput]="locationText" (setLocation)="getLocation($event)" adressType="geocode"></app-google-places>
+<!--													<button (click)="locate()"><i class="fa fa-location-arrow"></i></button>-->
+												</div>
+
+												<button type="button" class="btn btn-outline-secondary" (click)="locate()"><i class="zmdi zmdi-gps-dot"></i></button>
+											</div>
+										</div>
+
+										<google-map height="400px" width="100%" [zoom]="mapConfig.zoom" [center]="mapConfig.center" [options]="mapConfig.options">
+											<map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label" [title]="marker.title" [options]="marker.options">
+											</map-marker>
+										</google-map>
+
+										<div class="model_footer row align-items-end p-1 px-4">
+											<div class="col-lg-9  col-md-6 col-sm-12">
+												<!--
+                                                            <div class="form-group col-lg-11 col-md-12 col-sm-12 m-0 px-0 pt-2">
+                                                                <label style="font-weight: 500;">Add Address title</label>
+                                                                <input class="form-control p-1" type="text" value="Home">
+                                                            </div>
+                                                        -->
+											</div>
+											<div class="col-lg-3  col-md-6 col-sm-12">
+												<div class="form-group text-right px-0 mb-0">
+													<button type="button" class="btn btn-close" data-dismiss="modal">
+														<span *ngIf="!loadingLocation">Close</span>
+                                            			<span *ngIf="loadingLocation"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Fetching Location...</span>
+													</button>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Add Address Modal end -->
+
+		<app-footer></app-footer>
+	</div>
+</div>

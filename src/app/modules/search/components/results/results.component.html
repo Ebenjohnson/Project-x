@@ -1,0 +1,56 @@
+<div *ngIf="noResult && !loading" class="empty_view mx-auto">
+	<div class="img_box">
+		<img src="assets/images/no_search.png" class="img-fluid">
+	</div>
+	<div class="text_box">
+		<h1 class="text-center">Opps ! No Result Found</h1>
+		<p class="text-center">We can,t find anything related to your search. <br> Try a different search.</p>
+	</div>
+</div>
+
+<div *ngIf="loading" class="d-flex justify-content-center loader">
+	<div class="spinner-border" role="status">
+		<span class="sr-only">Loading...</span>
+	</div>
+</div>
+
+<div *ngIf="!loading">
+	<div class="bg-gray restaurant-entry" *ngFor="let restaurant of restaurants">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-8 text-center text-sm-left">
+				
+				<div class="entry-logo">
+					<a class="img-fluid" [routerLink]="['/profile', restaurant.id]"><img [src]="restaurant.image_url"></a>
+				</div>
+				
+				<!-- end:Logo -->
+				<div class="entry-dscr">
+					<h5 class="d-flex">
+						<a [routerLink]="['/profile', restaurant.id]">{{ restaurant.name }}</a>
+					</h5>
+					<p class="d-block mb-2"><i class="fa fa-map-marker" style="margin-right: 9px;"></i> {{restaurant.address}}</p>
+					<ul class="list-inline">
+						<li class="list-inline-item"><i class="fa fa-check-circle-o"></i> Min. Order {{currency}} {{restaurant.minimum_order}}</li>
+						<li class="list-inline-item"><i class="fa fa-motorcycle"></i> {{ restaurant.delivery_time }} mins.</li>
+						<li class="list-inline-item">
+							Delivery fee {{currency}} {{ restaurant.delivery_fee }}
+						</li>
+					</ul>
+				</div>
+				<!-- end:Entry description -->
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-4 text-center">
+				<div class="right-content bg-white">
+					<div class="right-review">
+						<div class="rating-block">
+							<app-ratings [ratings]="restaurant.ratings"></app-ratings>
+						</div>
+						<p *ngIf="restaurant.ratings_count"> {{restaurant.ratings_count}} Reviews</p> <a [routerLink]="['/profile', restaurant.id]" class="btn theme-btn-dash">Read more</a>
+					</div>
+				</div>
+				<!-- end:right info -->
+			</div>
+		</div>
+		<!--end:row -->
+	</div>
+</div>

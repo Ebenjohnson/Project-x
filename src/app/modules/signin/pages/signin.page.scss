@@ -1,0 +1,43 @@
+//#dateTimeForSchedule {
+//    height: 0px;
+//    width: 0px;
+//    opacity: 0;
+//}
+
+.page-wrapper {
+  background: url(~/assets/imgs/photo-1585747860715-2ba37e788b70.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  .container {
+    min-height: 605px;
+  }
+  //	padding: 100px;
+  .login {
+    padding-top: 70px;
+
+    .widget {
+      border-radius: 5px;
+    }
+
+    p {
+      .theme-btn {
+        font-size: 15px;
+        min-width: 110px;
+      }
+    }
+  }
+
+  form {
+    h4 {
+      a {
+        font-size: 0.9rem;
+        font-weight: normal;
+        position: relative;
+        top: 7px;
+        letter-spacing: 0;
+        font-weight: 500;
+      }
+    }
+  }
+}

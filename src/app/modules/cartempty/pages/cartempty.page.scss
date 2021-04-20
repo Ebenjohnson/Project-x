@@ -1,0 +1,36 @@
+//#dateTimeForSchedule {
+//    height: 0px;
+//    width: 0px;
+//    opacity: 0;
+//}
+
+.page-wrapper {
+	background: #fff;
+
+	.empty_view {
+		.img_box {
+			width: 300px;
+			margin: 0 auto;
+		}
+
+		.text_box {
+			padding-bottom: 30px;
+
+			h1 {
+				color: #CFD1D2;
+				font-weight: 500;
+				font-size: 27px;
+			}
+
+			p {
+				color: #DEDFE1;
+				padding-bottom: 20px;
+			}
+
+			.theme-btn {
+				display: block !important;
+
+			}
+		}
+	}
+}

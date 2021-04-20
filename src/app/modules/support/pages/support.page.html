@@ -1,0 +1,80 @@
+<div>
+	<div class="site-wrapper animsition" data-animsition-in="fade-in" data-animsition-out="fade-out">
+		<app-header></app-header>
+		<div class="page-wrapper">
+			<!-- end:Top links -->
+			<!-- start: Inner page hero -->
+			<section class="bg-image space-md" data-image-src="images/image01.jpg">
+				<div class="profile">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12 col-sm-4  col-lg-4 profile-img">
+								<h1 class="font-white">Support</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- end:Inner page hero -->
+			<div class="breadcrumb">
+				<div class="container">
+					
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-6">
+							<ul>
+								<li><a [routerLink]="['/']" class="active">Home</a></li>
+								<li><a [routerLink]="">Support</a></li>
+							</ul>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-6">
+							<div class="d-flex contact_details ">
+								<ul class="ml-auto">
+									<li><i class="fa fa-envelope mx-2 text-primary" aria-hidden="true"></i> {{supportEmail}}</li>
+									
+									<li><i class="fa fa-mobile  mx-2 text-primary" aria-hidden="true" style="font-size: 23px; position: relative; top: 3px;"></i> {{supportPhone}}</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<section class="contact-page inner-page">
+				<div class="container">
+					<div class="row">
+						<!-- REGISTER -->
+						<div class="col-12">
+							<div class="widget">
+								<div class="widget-body">
+									<!-- Contact form -->
+									<div class="form-horizontal contact-form" role="form">
+										<fieldset>
+											<div class="row">
+												<div class="col-sm-12 col-md-12 col-lg-12 form-group">
+													<input class="form-control" id="fname" name="fname" type="text" placeholder="Name *" required=""> </div>
+												</div>
+												<div class="row ">
+													<div class="col-sm-12 col-md-12 col-lg-12 form-group">
+														<input class="form-control" id="email" name="email" type="email" placeholder="Email *" required=""> </div>
+													</div>
+													<div class="row form-group">
+														<div class="col-12">
+															<textarea class="form-control" id="message" name="message" rows="10" placeholder="Message *" required=""></textarea>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-12">
+															<button class="btn btn-lg theme-btn" type="submit">Send Message</button>
+														</div>
+													</div>
+												</fieldset>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<app-footer></app-footer>
+				</div>
+			</div>
+		</div>

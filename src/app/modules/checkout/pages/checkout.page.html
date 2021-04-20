@@ -1,0 +1,266 @@
+<div id="body">
+    <div class="site-wrapper animsition" data-animsition-in="fade-in" data-animsition-out="fade-out">
+        <app-header></app-header>
+        <div *ngIf="!orderPlaced" class="page-wrapper">
+            <div class="top-links">
+                <div class="container">
+                    <ul class="row links d-flex">
+                        <li class="col-sm-12 col-lg-3 link-item active"><span>1</span><a [routerLink]="">Choose Your Location</a></li>
+                        <li class="col-sm-12 col-lg-3 link-item active"><span>2</span><a [routerLink]="">Choose Store</a></li>
+                        <li class="col-sm-12 col-lg-3 link-item active"><span>3</span><a [routerLink]="">Pick Your favorite item</a></li>
+                        <li class="col-sm-12 col-lg-3 link-item"><span>4</span><a [routerLink]="">Order and Pay online</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container m-t-30">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="widget clearfix">
+                            <div class="widget-heading">
+                                <h3 class="widget-title text-dark">
+                                    When you want delivery?
+                                </h3>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="delivery-option">
+                                <ul class=" list-unstyled pt-3 mb-0">
+                                    <li class="px-3 pb-3">
+                                        <label class="custom-control custom-radio align-items-start">
+                                            <input id="radioStacked1" name="deliverySchedule" checked type="radio" class="custom-control-input" [value]="orderType.asap" [(ngModel)]="selectedOrderType"> <span class="custom-control-indicator"></span> <span class="custom-control-description w-100">
+                                                <strong class="d-flex">Now</strong>
+                                                <small>As Soon as possible</small>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    
+                                    <li class="px-3 pb-3">
+                                        <label class="custom-control custom-radio  m-b-10" [owlDateTimeTrigger]="dt1">
+                                            <input name="deliverySchedule" type="radio" class="custom-control-input" [value]="orderType.later" [(ngModel)]="selectedOrderType"> <span class="custom-control-indicator" style="position: relative; top: -7px;"></span>
+                                            <span class="custom-control-description w-100">
+                                                <strong class="d-flex">Later</strong>
+                                                <small class="d-flex">
+                                                    Select date & time of delivery
+                                                    <i class="fa fa-calendar ml-auto" aria-hidden="true" [owlDateTimeTrigger]="dt1"></i>
+                                                    <input id="dateTimeForSchedule" [owlDateTime]="dt1" type="text" [min]="minDateTimeForSchedule" (dateTimeChange)="onScheduleTimeChange($event)">
+                                                    <owl-date-time #dt1></owl-date-time>
+                                                    <br/>
+                                                    <span>{{selectedScheduledTimeFormatted}}</span>
+                                                </small>
+                                            </span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="widget clearfix">
+                            <div class="widget-heading">
+                                <h3 class="widget-title text-dark">
+                                    Where to deliver?
+                                </h3>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="delivery-option">
+                                <ul class=" list-unstyled pt-3 mb-0">
+                                    <li *ngFor="let address of addresses" class="px-3 pb-3" >
+                                        <label class="custom-control custom-radio align-items-start">
+                                            <input id="radioStacked2" name="address" type="radio" class="custom-control-input" [value]="address.id" [(ngModel)]="selectedAddressId" (change)="addressChanged($event)"> <span class="custom-control-indicator"></span> <span class="custom-control-description w-100">
+                                                <strong class="d-flex">{{address.title}}</strong>
+                                                <small class="d-flex align-items-end">{{address.address}}
+                                                    <a class="ml-auto" href="#" data-toggle="modal" data-target="#add_address_modal"><i class="fa fa-pencil ml-auto" aria-hidden="true" data-toggle="modal" data-target="#add_address_modal" (click)="setAddress(address)"></i>
+                                                    </a>
+                                                </small>
+                                            </span>
+                                        </label>
+                                    </li>
+                                
+                                    <li class="px-3 pb-3">
+                                        <a href="#" data-toggle="modal" data-target="#add_address_modal" (click)="setAddress(null)">
+                                            <label class="custom-control custom-radio align-items-center">
+                                                <div class="add_icon">+</div>
+                                                <span class="custom-control-description w-100">
+                                                    <strong class="d-flex pb-0">Add new address</strong>
+                                                </span>
+                                            </label>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="widget clearfix">
+                            <div class="widget-heading">
+                                <h3 class="widget-title text-dark">
+                                    Cart summary
+                                </h3>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="cart-totals margin-b-20">
+                                <div class="cart-totals-fields">
+                                    <table class="table mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <td>Subtotal</td>
+                                                <td>{{currency}} {{cart.subtotal}}</td>
+                                            </tr>
+                                            <tr *ngIf="cart.discount">
+                                                <td>Discount</td>
+                                                <td>{{currency}} {{cart.discount}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Taxes</td>
+                                                <td>{{currency}} {{cart.tax}}</td>
+                                            </tr>
+                                            <tr *ngIf="cart.deliveryFee">
+                                                <td>Delivery Fee</td>
+                                                <td>{{currency}} {{cart.deliveryFee}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-color"><strong>Total</strong></td>
+                                                <td class="text-color"><strong>{{currency}} {{cart.total}}</strong></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="widget clearfix">
+                            <div class="widget-heading">
+                                <h3 class="widget-title text-dark">
+                                    Select Payment menthod
+                                </h3>
+                                <div class="clearfix"></div>
+                            </div>
+                            
+                            
+                            <div class="delivery-option">
+                                <ul class=" list-unstyled pt-3 mb-0">
+                                    <li class="px-3 pb-3" *ngFor="let paymentMethod of paymentMethods">
+                                        <label class="custom-control custom-radio align-items-center">
+                                            <input id="radioStacked3" name="payment_method" type="radio" class="custom-control-input" [value]="paymentMethod" [(ngModel)]="selectedPaymentMethod"> <span class="custom-control-indicator"></span> <span class="custom-control-description w-100 pb-0">
+                                                <strong class="d-flex">{{paymentMethod.title}}</strong>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li [ngClass]="{'hideStripeCard' : selectedPaymentMethod?.slug != 'stripe'}" class="px-3 pb-3">
+                                        <div id="stripe-card-element"></div>
+                                    </li>
+                                    <li class="px-3 pb-3">
+                                        <p class="text-center mb-0"> <a href="" (click)="placeOrder($event)" class="btn btn-outline-success btn-block" >
+                                            <span *ngIf="!loading">Place Order</span>
+                                            <span *ngIf="loading"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Placing Order...</span>
+                                        </a> </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="orderPlaced && order" class="page-wrapper orderPlaced" >
+            <div class="container">
+                <div class="img_box col-lg-4 mx-auto text-center">
+                    <img src="assets/images/order_confirmed.png">
+                </div>
+                
+                <div class=" text-center">
+                    <h1>Hey, {{order.user.name}}</h1>
+                    <p>Your order with {{order.store.name}} <br> placed and will delivered at your place <br> as soon as possible</p>
+
+                    <button onclick="location.href='/orders'" type="button" class="col-lg-4 col-md-6 col-sm-12  d-block mx-auto btn theme-btn btn-lg my_orders">My Orders</button>
+                </div>
+            </div>
+        </div>
+        <app-footer></app-footer>
+        <app-address (setAddress)="getAddress($event)" [address]="this.address"></app-address>
+
+        <!-- Validate Address -->
+		<div class="modal fade" id="validateAddressModal" tabindex="-1" role="dialog" aria-labelledby="validateAddressModal" aria-hidden="true" data-backdrop="static">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Please select address</h5>
+					</div>
+					<div class="modal-body">
+						You need to select address before you can place order.
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+        </div>
+        <!-- Validate Payment -->
+		<div class="modal fade" id="validatePaymentModal" tabindex="-1" role="dialog" aria-labelledby="validatePaymentModal" aria-hidden="true" data-backdrop="static">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Please select address</h5>
+					</div>
+					<div class="modal-body">
+						You need to select payment method before you can place order.
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+        </div>
+        
+        <!-- Validate Stripe Card -->
+		<div class="modal fade" id="validateStripeCardModal" tabindex="-1" role="dialog" aria-labelledby="validateStripeCardModal" aria-hidden="true" data-backdrop="static">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Invalid card details</h5>
+					</div>
+					<div class="modal-body">
+						Please enter valid card details to proceed
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+        </div>
+
+        <!-- Stripe Payment failed -->
+		<div class="modal fade" id="stripePaymentFailedModal" tabindex="-1" role="dialog" aria-labelledby="stripePaymentFailedModal" aria-hidden="true" data-backdrop="static">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Payment failed</h5>
+					</div>
+					<div class="modal-body">
+						Sorry, your payment is failed
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+        </div>
+
+        <!-- Validate Schedule Time -->
+		<div class="modal fade" id="validateScheduleTimeModal" tabindex="-1" role="dialog" aria-labelledby="validateScheduleTimeModal" aria-hidden="true" data-backdrop="static">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Please select time</h5>
+					</div>
+					<div class="modal-body">
+						You need to select scheduled time before you can place order.
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>

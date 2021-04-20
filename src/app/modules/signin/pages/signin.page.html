@@ -1,0 +1,145 @@
+<div id="body">
+	<div class="site-wrapper animsition" data-animsition-in="fade-in" data-animsition-out="fade-out">
+		<!-- <app-header></app-header> -->
+		<div class="page-wrapper">
+			<div class="container">
+				<div class="login row">
+					<div class=" mb-0 col-sm-8 col-md-8 col-lg-4 mx-md-auto ml-lg-auto mr-lg-0 ">
+						<div class="widget">
+							<div class="widget-body">
+								<form *ngIf="showRegister" (ngSubmit)="register()" #formRegister="ngForm">
+									<h4 class="m-b-30 d-flex w-100 mt-2">
+										Register
+										<a class="d-clock ml-auto mr-0" [routerLink]="" (click)="goToLogin()">Already have an account?</a>
+									</h4>
+									<h5 class="text-danger" *ngIf="registerError?.message">{{ registerError.message }}</h5>
+									<h5 class="text-danger" *ngIf="otpError">{{ otpError }}</h5>
+									<div class="row mb-1">
+										<div class="form-group col-sm-12">
+											<label style="font-weight: 500;">Firstname</label>
+											<input class="form-control p-1" type="text" name="name" [(ngModel)]="registerRequest.name" #name=ngModel required>
+											<label *ngIf="registerError?.name" class="text-danger">{{registerError.name}}</label>
+										</div>
+										<div class="form-group col-sm-12">
+											<label style="font-weight: 500;">Lastname</label>
+											<input class="form-control p-1" type="text" name="name" [(ngModel)]="registerRequest.name" #name=ngModel required>
+											<label *ngIf="registerError?.name" class="text-danger">{{registerError.name}}</label>
+										</div>
+										<div class="form-group col-sm-12">
+											<label style="font-weight: 500">Email Address</label>
+											<input type="email" class="form-control p-1"  name="email" [(ngModel)]="registerRequest.email" #email=ngModel required>
+											<label *ngIf="registerError?.email" class="text-danger">{{registerError.email}}</label>
+										</div>
+										<div class="form-group col-sm-12">
+											<label style="font-weight: 500">Password <small>(Min. 6 characters)</small></label>
+											<input type="password" class="form-control p-1"  name="password" [(ngModel)]="registerRequest.password" #password=ngModel required minlength="6">
+											<label *ngIf="registerError?.password" class="text-danger">{{registerError.password}}</label>
+										</div>
+										
+										<div class="form-group col-sm-12">
+											<label style="font-weight: 500">Mobile Number</label>
+											<div class="input-group mb-2 mr-sm-2">
+												<div class="input-group-prepend">
+													<select class="custom-select m-0" name="country_phone_code" #country_phone_code=ngModel [(ngModel)]="registerRequest.countryPhoneCode">
+														<option *ngFor="let country of countries" [value]="country.dial_code">{{country.dial_code}}</option>
+													</select>
+												</div>
+												<input type="text" class="form-control p-1"  name="mobile_number" [(ngModel)]="registerRequest.mobile_number" #mobile_number=ngModel required>
+											</div>
+											<label *ngIf="registerError?.mobileNumber" class="text-danger">{{registerError.mobileNumber}}</label>
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-sm-12">
+											<p class="mb-0 mb-2"> <button class="btn theme-btn btn-lg" [disabled]="!formRegister.form.valid || registerInProgress">{{registerButtonText}}</button> </p>
+										</div>
+									</div>
+									
+								</form>
+								
+								
+								
+								<form *ngIf="!showRegister" (ngSubmit)="login()" #form="ngForm">
+									<h4 class="m-b-30 d-flex w-100 mt-2">
+										Login
+										<a class="d-clock ml-auto mr-0" [routerLink]="" (click)="goToRegister()">New User?</a>
+									</h4>
+									
+									<h3 class="text-danger" *ngIf="loginError">{{ loginError }}</h3>
+									<div class="row mb-1">
+										<div class="form-group col-sm-12">
+											<label style="font-weight: 500">Email Address</label>
+											<input type="email" class="form-control p-1" placeholder="Email" name="email" [(ngModel)]="loginRequest.email" #email=ngModel required>
+										</div>
+										<div class="form-group col-sm-12">
+											<label style="font-weight: 500">Password</label>
+											<input type="password" class="form-control p-1" placeholder="Password" name="password" [(ngModel)]="loginRequest.password" #password=ngModel required>
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-sm-12">
+											<p class="mb-0 mb-2">
+												<button [disabled]="!form.form.valid" class="btn theme-btn btn-lg">Login</button>
+											</p>
+										</div>
+									</div>
+									
+								</form>
+								
+								
+							</div>
+						</div>
+						<!-- end: Widget -->
+					</div>
+				</div>
+			</div>
+			
+			<!-- <app-footer></app-footer> -->
+			
+			<div class="modal fade otp_model" id="otp_model" tabindex="-1" role="dialog" aria-labelledby="otp_model" aria-hidden="true" data-backdrop="static">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content border-0 overflow-hidden" style="border-radius: 7px;">
+						<div class="modal-body p-0">
+							<!-- REGISTER -->
+							<div class="widget mb-0">
+								<div class="widget-body">
+									<form class="">
+										<h4 class="m-b-30 d-flex w-100 mt-2">
+											Verification
+											<a class="d-clock ml-auto mr-0">0:{{timeLeft}}</a>
+										</h4>
+										
+										
+										<div class="text_box m-b-30">
+											<p>We've send verification code at</p>
+											<h2>{{otpMobileNumber}}</h2>
+										</div>
+										<div class="row mb-1">
+											<div class="form-group col-sm-12">
+												<label style="font-weight: 500">Enter Verification code</label>
+												<input type="text" class="form-control p-1" placeholder="Enter code here" name="otp_code" [(ngModel)]="otpCode" #otp_code=ngModel/>
+											</div>
+										</div>
+										
+										<div class="row">
+											<div class="col-sm-12 d-flex align-items-center">
+												<p class="mb-0 mb-2"> <button class="btn theme-btn btn-lg" [disabled]="!otpCode || otpCode?.length != 6" (click)="verifyOtp()">Verify Now</button> </p>
+												
+												<p class="mb-0 mb-2 mr-0 ml-auto"> <button *ngIf="timeLeft <= 0" class="btn theme-btn btn-lg resend_btn" (click)="resendOtp()">Resend code</button> </p>
+											</div>
+										</div>
+										
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="phone-sign-in-recaptcha"></div>
+		</div>
+	</div>
+</div>

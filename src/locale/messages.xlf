@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="homeIntroductionHeader" datatype="html">
+        <source>Order Delivery &amp; Take-Out </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/home/pages/home.page.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeIntroductionSubHeader" datatype="html">
+        <source>Find restaurants, specials, and coupons for free</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/home/pages/home.page.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeSearchPlaceholder" datatype="html">
+        <source>I would like to eat....</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/home/pages/home.page.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/home/pages/home.page.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeSearchButton" datatype="html">
+        <source>Search food</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/home/pages/home.page.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeSteps1" datatype="html">
+        <source>Choose Location</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/home/pages/home.page.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeSteps2" datatype="html">
+        <source>Order Food</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/home/pages/home.page.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeSteps3" datatype="html">
+        <source>Eat Delivered</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/home/pages/home.page.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeRestaurantCount" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ locationRestaurantCount }}"/> restaurants matched your location <x id="INTERPOLATION_1" equiv-text="{{ locationRestaurantCounts }}"/>: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/home/pages/home.page.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homePopularHeader" datatype="html">
+        <source>Popular This Month In Your City</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/home/pages/home.page.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homePopularSubHeader" datatype="html">
+        <source>The easiest way to your favourite food</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/home/pages/home.page.html</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeFeaturedHeader" datatype="html">
+        <source>Featured restaurants</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/home/components/featured/featured.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

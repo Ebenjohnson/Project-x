@@ -1,0 +1,21 @@
+.modal-content {
+	.modal-header {
+		h5 {
+			color: #25282b;
+			font-size: 18px;
+			font-weight: 600 !important;
+		}
+	}
+
+	.form-group {
+		label {
+			margin: 0;
+			margin-top: 12px;
+			text-align: center;
+			display: block;
+		}
+	}
+	.modal-body{
+		padding-top: 26px;
+	}
+}

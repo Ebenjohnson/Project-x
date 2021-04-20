@@ -1,0 +1,80 @@
+<div id="body">
+	<div class="site-wrapper animsition" data-animsition-in="fade-in" data-animsition-out="fade-out">
+		<app-header></app-header>
+		<div class="page-wrapper">
+			<div class="page_title">
+				<div class="container">
+					<h1>FAQs</h1>
+				</div>
+			</div>
+			<div class="container">
+				<div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+					<ul>
+						<li [ngClass]="currentExpand == 'faq1' ? 'active' : '' " (click)="faqExpandToggle('faq1')">
+							<h2><span></span>Is ordering online secure?</h2>
+							<p>
+								Yes. We take the utmost care with the information that you provide us when placing an order on our website (or through any other means).
+								All of the information you provide during the ordering process is restricted to our staff, and we make sure that all of our employees up-to-date on our security and privacy policies.  If you have further cookfu.com, please feel free to e-mail us at admin@cookfu.ae
+							</p>
+						</li>
+						<li [ngClass]="currentExpand == 'faq2' ? 'active' : '' " (click)="faqExpandToggle('faq2')">
+							<h2><span></span> How do I place my order? </h2>
+							<p>
+								Once you have finished adding items to your shopping cart and are ready to complete your transaction, move your cursor to the upper-right corner of the screen and click on the “Checkout” button. You will then be transferred to our secure server and asked to either create a new account or place an order without an account.
+								<br/>
+								If you expect to purchase additional materials from cookfu.com in the future, you may want to consider setting up an account. If you choose to do so, our site will maintain on file your billing and shipping information as well as your payment data so you do not have to fill out this information each time you visit our secure server. You will also have the ability to view your complete history of purchasing made on cookfu.com.
+								<br/>
+								Once you have decided how to proceed, you will be prompted to enter the name and address of the intended recipient of your shipment (i.e. your delivery information), followed by your billing details. You will have the option of indicating that the shipping and billing details are the same, if applicable.
+								<br/>
+								After providing this information, you will need to click on the "continue" button to determine your delivery charge, if applicable.    If you have a valid promotional code, you may enter it in the "Coupon Discount" field directly beneath the shipping information. Be sure to click on the "Apply to Order" button in order to have your savings calculated and applied to your order. 
+								<br/>
+								After completing the shipping and coupon discount information, you will need to enter in your payment details.  Once you have completed the form, click on the "Review Order" button. You will be brought to a screen that provides an order summary. Once you are ready to complete your order, click on the "Submit order" button to the lower right of your screen.  You will receive an on-screen order confirmation, as well as a second confirmation via e-mail.
+								<br/>
+								Should you encounter any difficulties during the checkout process, please feel free to contact our customer service department using one of the options listed at the top of this page
+							</p>
+						</li>
+						<li [ngClass]="currentExpand == 'faq3' ? 'active' : '' " (click)="faqExpandToggle('faq3')">
+							<h2><span></span>How do I view what’s in my shopping cart?</h2>
+							<p>
+								To view the contents of your cart, click on the “View cart” icon in the upper-right corner of your computer screen. Once you click on this icon, you can easily change the number of copies you want to purchase of a particular item in your cart by updating the quantity listed and then clicking the “Update cart” link. You can also delete any item in your cart by clicking the “Remove” check box to the left of that item and then updating your cart with the "Update cart" link.
+							</p>
+						</li>
+						<li [ngClass]="currentExpand == 'faq4' ? 'active' : '' " (click)="faqExpandToggle('faq4')">
+							<h2><span></span>How do I add items to my cart?</h2>
+							<p>
+								To add an item to your cart, navigate to the page of the item you are interested in and then choose your desired item. When you click the “Add to Cart” link, you will be brought to your "Shopping cart" page where you can then enter the quantity of the item that you would like to order using the "Qty" field on the right side of the screen. After you have entered a quantity, you can continue shopping or choose to complete your order.
+							</p>
+						</li>
+						<li [ngClass]="currentExpand == 'faq5' ? 'active' : '' " (click)="faqExpandToggle('faq5')">
+							<h2><span></span>How do I remove items from my cart? </h2>
+							<p>
+								First, click on the “View cart” link in the upper-right corner of your computer screen. This will allow you to view all items currently in your cart. Once you have identified the item that you would like to delete, click on the “Remove” check box to the left of the item description and then click "Update cart" in the lower-right corner to have your changes reflected.
+							</p>
+						</li>
+						<li [ngClass]="currentExpand == 'faq6' ? 'active' : '' " (click)="faqExpandToggle('faq6')">
+							<h2><span></span>How do I change the quantity of a particular item in my cart?</h2>
+							<p>
+								First, click on the “View cart” link in the upper-right corner of your computer screen. This will allow you to view all items currently in your cart, as well as the quantities that you have chosen for each item. To change the quantity of an item in your cart, move your cursor to the box that appears under the "Qty" header for this item and type in the quantity desired, and then click the “Update cart” link. Once you do this, the quantity and associated amount (if applicable) will automatically change and reflect the correct amounts for both the quantity and the cost.
+							</p>
+						</li>
+						<li [ngClass]="currentExpand == 'faq7' ? 'active' : '' " (click)="faqExpandToggle('faq7')">
+							<h2><span></span>How can I sign into my account on the online store and/or edit the information in my account?</h2>
+							<p>
+								If you have previously purchased form cookfu.com, then you may have opted to create a personal account in our system.  If so, you can access this account by clicking on the “Log In” link in the upper-right corner of your computer screen. This takes you to a page where you will be prompted to enter the e-mail address and password that you registered with us when you created the account.  If you have forgotten your password, you can create a new one by click on the "Request new password" tab. After your data has been verified, your account data will appear and you can either edit existing information or proceed with the checkout process.
+								If you are a new user of cookfu.com you can just create an account by clicking “create a new account” option. By clicking this option you are able to enter the name and required details in the required fields and create your new desired user name and password.
+							</p>
+						</li>
+						<li [ngClass]="currentExpand == 'faq8' ? 'active' : '' " (click)="faqExpandToggle('faq8')">
+							<h2><span></span>How will I know that you have received my order?</h2>
+							<p>
+								After you complete the checkout process, a receipt will appear on your screen detailing your final order including shipping charges, your billing address, and the items that are being sent to your shipping address. Please keep this receipt for your reference. You will also receive confirmation via e-mail that we have received your order. (Please be sure to enter your e-mail address correctly on the order form so that we can be sure to deliver your confirmation to you.)
+							</p>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+		<app-footer></app-footer>
+	</div>
+</div>

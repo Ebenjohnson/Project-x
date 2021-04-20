@@ -1,0 +1,21 @@
+<div id="body">
+	<div class="site-wrapper animsition" data-animsition-in="fade-in" data-animsition-out="fade-out">
+		<app-header></app-header>
+		<div class="page-wrapper">
+			<div class="container">
+				<div class="empty_view">
+					<div class="img_box">
+						<img src="assets/images/emplty-cart.gif" class="img-fluid">
+					</div>
+					<div class="text_box">
+						<h1 class="text-center">No items in cart</h1>
+						<p class="text-center">You can go to home page to view more stores</p>
+						<button type="button" class="btn theme-btn btn-lg mx-auto" (click)="goToHome()">See stores around you</button>
+					</div>
+
+				</div>
+			</div>
+			<app-footer></app-footer>
+		</div>
+	</div>
+</div>

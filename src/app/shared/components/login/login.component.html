@@ -1,0 +1,161 @@
+<!--			Register Now Model start -->
+<div class="modal fade register_now_model" id="register_now_model" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content border-0 overflow-hidden" style="border-radius: 7px;">
+            <div class="modal-body p-0">
+                <!-- REGISTER -->
+                <div class="widget mb-0">
+                    <div class="widget-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <form class="">
+                            <h4 class="m-b-30 d-flex w-100 mt-2">
+                                Register
+                                <a class="d-clock ml-auto mr-0" data-dismiss="modal" data-toggle="modal" data-target="#login_model" [routerLink]="">Already have an account?</a>
+                            </h4>
+                            <div class="row mb-1">
+                                <div class="form-group col-sm-12">
+                                    <label style="font-weight: 500;">Full Name</label>
+                                    <input class="form-control p-1" type="text" value="">
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label style="font-weight: 500">Email address</label>
+                                    <input type="email" class="form-control p-1" placeholder="">
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label style="font-weight: 500">Create Password</label>
+                                    <input type="email" class="form-control p-1" placeholder="">
+                                </div>
+                                
+                                <div class="form-group col-sm-12">
+                                    <label style="font-weight: 500">Phone number</label>
+                                    <div class="input-group mb-2 mr-sm-2">
+                                        <div class="input-group-prepend">
+                                            <select class="custom-select m-0">
+                                                <option selected>+1</option>
+                                                <option value="1">+91</option>
+                                                <option value="2">+9</option>
+                                                <option value="3">+15</option>
+                                            </select>
+                                        </div>
+                                        <input type="tel" class="form-control p-1">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p class="mb-0 mb-2"> <button class="btn theme-btn btn-lg" data-dismiss="modal" data-toggle="modal" data-target="#otp_model">Register</button> </p>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <!-- end: Widget -->
+                </div>
+                <!-- /REGISTER -->
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Register Now Model end -->
+
+<!--			Login  Model start -->
+<div class="modal fade register_now_model" id="login_model" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content border-0 overflow-hidden" style="border-radius: 7px;">
+            <div class="modal-body p-0">
+                <!-- REGISTER -->
+                <div class="widget mb-0">
+                    <div class="widget-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <form (ngSubmit)="login()" #form="ngForm">
+                            <h4 class="m-b-30 d-flex w-100 mt-2">
+                                Login
+                                <a class="d-clock ml-auto mr-0" data-dismiss="modal" data-toggle="modal" data-target="#register_now_model" [routerLink]="">New User?</a>
+                            </h4>
+
+                            <h3 class="text-danger" *ngIf="loginError">{{ loginError }}</h3>
+                            <div class="row mb-1">
+                                <div class="form-group col-sm-12">
+                                    <label style="font-weight: 500">Email address</label>
+                                    <input type="email" class="form-control p-1" placeholder="Email" name="email" [(ngModel)]="loginRequest.email" #email=ngModel required>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label style="font-weight: 500">Password</label>
+                                    <input type="password" class="form-control p-1" placeholder="Password" name="password" [(ngModel)]="loginRequest.password" #password=ngModel required>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p class="mb-0 mb-2">
+                                        <button [disabled]="!form.form.valid" class="btn theme-btn btn-lg">Login</button>
+                                    </p>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <!-- end: Widget -->
+                </div>
+                <!-- /REGISTER -->
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login Model end -->
+
+<!-- Otp  Model start -->
+<div class="modal fade register_now_model otp_model" id="otp_model" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content border-0 overflow-hidden" style="border-radius: 7px;">
+            <div class="modal-body p-0">
+                <!-- REGISTER -->
+                <div class="widget mb-0">
+                    <div class="widget-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <form class="">
+                            <h4 class="m-b-30 d-flex w-100 mt-2">
+                                Verification
+                                <a class="d-clock ml-auto mr-0" data-dismiss="modal" data-toggle="modal" data-target="#register_now_model">0:49 min</a>
+                            </h4>
+                            
+                            
+                            <div class="text_box m-b-30">
+                                <p>We've send verification code on</p>
+                                <h2>+1 987 654 3210</h2>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="form-group col-sm-12">
+                                    <label style="font-weight: 500">Enter Verification code</label>
+                                    <input type="email" class="form-control p-1" placeholder="">
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-sm-12 d-flex align-items-center">
+                                    <p class="mb-0 mb-2"> <button class="btn theme-btn btn-lg">Verify Now</button> </p>
+                                    
+                                    <p class="mb-0 mb-2 mr-0 ml-auto"> <button class="btn theme-btn btn-lg resend_btn">Resend code</button> </p>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <!-- end: Widget -->
+                </div>
+                <!-- /REGISTER -->
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Otp Model end -->

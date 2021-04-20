@@ -1,0 +1,41 @@
+.add_address_modal {
+	.search_box {
+		.form_container {
+			.input-group {
+				display: flex !important;
+				align-items: center !important;
+
+				app-google-places {
+					width: calc(100% - 52px) !important;
+
+					input {
+						font-size: 15px !important;
+					}
+				}
+			}
+
+			.btn-outline-secondary {
+				color: #f95424 !important;
+			}
+		}
+
+	}
+
+	.model_footer {
+		.form-group {
+			padding: 8px 0 !important;
+
+			.btn.btn-close {
+				background-color: #F95424 !important;
+				color: #fff !important;
+				border: 1px solid #F95424 !important;
+				font-size: 1.25rem !important;
+			}
+		}
+	}
+
+}
+
+app-root .modal.add_address_modal .modal-content .form-control {
+	font-size: 15px !important;
+}

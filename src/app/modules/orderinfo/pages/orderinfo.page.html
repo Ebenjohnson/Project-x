@@ -1,0 +1,229 @@
+<div id="order_info">
+	<div class="site-wrapper animsition" data-animsition-in="fade-in" data-animsition-out="fade-out">
+		<app-header></app-header>
+		<div class="page-wrapper">
+			<div class="breadcrumb">
+				<div class="container">
+					<ul>
+						<li><a [routerLink]="['/']" class="active">Home</a></li>
+						<li>Order Info</li>
+					</ul>
+				</div>
+			</div>
+			<div class="container m-t-30">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+						<div class="sidebar clearfix m-b-20 border-bottom-0">
+							<div class="main-block order_status">
+								<div class="sidebar-title white-txt">
+									<h6>Order Status: <span class="order-status">{{order.status}}</span></h6>
+								</div>
+								<ul class="chef-detail">
+									<li class="p-1 d-flex align-items-center" [ngClass]="orderStatusActiveTab('placed') ? 'active' : ''">
+										<i class="zmdi zmdi-check-all"></i>
+										<small class="d-block text-muted mt-0 px-3">Placed</small>
+									</li>
+									<li class="p-1 d-flex align-items-center" [ngClass]="orderStatusActiveTab('preparing') ? 'active' : ''">
+										<i class="zmdi zmdi-cutlery"></i>
+										<small class="d-block text-muted mt-0 px-3">Preparing</small>
+									</li>
+									<li class="p-1 d-flex align-items-center" [ngClass]="orderStatusActiveTab('dispatched') ? 'active' : ''">
+										<i class="zmdi zmdi-bike"></i>
+										<small class="d-block text-muted mt-0 px-3">Dispatched</small>
+									</li>
+									<li class="p-1 d-flex align-items-center" [ngClass]="orderStatusActiveTab('track') ? 'active' : ''" data-toggle="modal" data-target="#add_address_modal">
+										<i class="zmdi zmdi-truck"></i>
+										<small class="d-block text-muted mt-0 px-3">Track</small>
+									</li>
+									<li class="p-1 d-flex align-items-center" [ngClass]="orderStatusActiveTab('delivered') ? 'active' : ''">
+										<i class="zmdi zmdi-home"></i>
+										<small class="d-block text-muted mt-0 px-3">Delivered</small>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-6">
+						<div class="menu-widget m-b-30">
+							<div class="widget-heading panel mb-0 border-top-0 border-right-0 border-left-0">
+								<div class="widget-title text-dark h3" data-toggle="collapse" href="#popular" aria-expanded="true">
+									Ordered items
+								</div>
+								<div class="clearfix"></div>
+							</div>
+
+							<div *ngFor="let orderItem of order.orderitems" class="order-row bg-white">
+								<div class="widget-body">
+									<div class="title-row mb-1 d-flex">{{orderItem.menuitem.title}}<span class="ml-auto d-flex">{{currency}} {{orderItem.total}}</span></div>
+									<div class="text-muted h6">
+										{{orderItem.quantity}} x {{currency}} {{orderItem.menuitem.price}}
+									</div>
+								</div>
+							</div>
+
+							<div class="order-row bg-white text-right">
+								<div class="widget-body">
+									<div class="row no-gutters mb-1">
+										<div class="col-8 text-right">
+											<div class="text-muted">
+												Sub Total
+											</div>
+										</div>
+										<div class="col-4 text-right">
+											<div class="title-row mb-1 text-right">
+												{{currency}} {{order.subtotal}}
+											</div>
+										</div>
+									</div>
+									<div class="row mb-1">
+										<div class="col-8 text-right">
+											<div class="text-muted ">
+												Tax
+											</div>
+										</div>
+										<div class="col-4 text-right">
+											<div class="title-row mb-1 text-right">
+												{{currency}} {{order.taxes}}
+											</div>
+										</div>
+									</div>
+									<div class="row mb-1">
+										<div class="col-8 text-right">
+											<div class="text-muted ">
+												Delivery Charges
+											</div>
+										</div>
+										<div class="col-4 text-right">
+											<div class="title-row mb-1 text-right">
+												{{currency}} {{order.delivery_fee}}
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- end:Widget menu -->
+							</div>
+
+							<div class="order-row grand_totall">
+								<div class="widget-body">
+									<div class="title-row mb-0 d-flex align-items-center"><strong class="text-primary">Payment Method: {{order.payment_method?.title}}</strong><span class="ml-auto d-block">{{currency}} {{order.total}}</span></div>
+								</div>
+							</div>
+						</div>
+						<!-- end:Widget menu -->
+					</div>
+					<!-- end:Bar -->
+
+
+					<div class="col-xs-12 col-md-12 col-lg-3">
+						<div class="sidebar-wrap">
+							<div class="widget widget-cart">
+								<!-- <div class="sidebar-title white-txt clearfix status-title">
+									<h6>Order Status: <span class="order-status">{{order.status}}</span></h6>
+									<div class="clearfix"></div>
+								</div> -->
+								<div class="order-row bg-white">
+									<div class="widget-body">
+										<div class="text-muted h6 mb-1">
+											Order ID
+										</div>
+										<div class="title-row mb-0">#{{order.id}}</div>
+									</div>
+								</div>
+								<div class="order-row">
+									<div class="widget-body">
+										<div class="text-muted h6 mb-1">
+											Store
+										</div>
+										<div class="title-row mb-0">
+											{{order.store?.name}}
+										</div>
+									</div>
+								</div>
+								<div class="order-row bg-white">
+									<div class="widget-body">
+										<div class="text-muted h6 mb-1">
+											Ordered on
+										</div>
+										<div class="title-row mb-0">{{formatDateTime(order.created_at)}}</div>
+									</div>
+								</div>
+								<div class="order-row">
+									<div class="widget-body">
+										<div class="text-muted h6 mb-1">
+											Delivery Address
+										</div>
+										<div class="title-row mb-0">
+											{{order.address?.address}}
+										</div>
+									</div>
+								</div>
+								<div class="order-row bg-white">
+									<div class="widget-body">
+										<div class="text-muted h6 mb-1">
+											Delivery Person Details
+										</div>
+										<div *ngIf="order.delivery_profile" class="title-row mb-0">
+											{{order.delivery_profile.user.name}}
+											{{order.delivery_profile.user.mobile_number}}<br />
+										</div>
+										<div *ngIf="!order.delivery_profile" class="title-row mb-0">
+											Not Assigned
+										</div>
+									</div>
+								</div>
+								<!-- end:Order row -->
+							</div>
+						</div>
+					</div>
+					<!-- end:Right Sidebar -->
+				</div>
+				<!-- end:row -->
+			</div>
+
+
+			<!--			Track order Modal start -->
+			<div class="modal fade track_order_modal add_address_modal" id="add_address_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-body">
+							<div class="container-fluid p-0">
+								<div class="row">
+									<div class="col-lg-12 col-sm-12">
+										<div class="widget mb-0 " style="overflow: hidden; border-radius: 4px !important;">
+											<div class="widget-body p-0 ">
+												<div class="sidebar-title white-txt  ">
+													<div class="row align-items-center">
+														<div class="col-lg-6 col-md-6 col-sm-12 py-0">
+															<h6 class="mb-2 mb-md-0"> Order #CKG214</h6>
+														</div>
+														<div class="col-lg-6 col-md-6 col-sm-12 py-0">
+															<button type="button" class="btn d-block text-center mx-sm-auto  ml-lg-auto mr-lg-0 mr-md-0 ml-md-auto">
+																<i class="fa fa-phone mx-1"></i>
+																Call Deliverman</button>
+														</div>
+													</div>
+												</div>
+												<div id="map" style="height: 500px"></div>
+												<div class="sidebar-title white-txt text-center bg-theme" data-dismiss="modal">
+													<div class="row align-items-center">
+														<div class="col-lg-12 col-md-12 col-sm-12 py-0">
+															<h6 class="w-100" style="font-size: 18px;">Close</h6>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Track order -->
+
+			<app-footer></app-footer>
+		</div>
+	</div>
+</div>

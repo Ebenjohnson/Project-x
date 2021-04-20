@@ -1,0 +1,57 @@
+<!-- Popular block starts -->
+<section class="popular">
+	<div class="container">
+		<div class="title text-center m-b-30">
+			<h2 i18n="@@homePopularHeader">Popular This Month In Your City</h2>
+			<p class="lead" i18n="@@homePopularSubHeader">The easiest way to your favourite food</p>
+		</div>
+		<div class="row">
+			<div *ngIf="noResult && !loading" class="empty_view mx-auto">
+				<div class="img_box">
+					<img src="assets/images/no_search.png" class="img-fluid">
+				</div>
+				<div class="text_box">
+					<h1 class="text-center">Oops! No featured store.</h1>
+					<p class="text-center">We haven't find any store near you. Please try different location.</p>
+				</div>
+			</div>
+			
+			<div *ngIf="loading" class="d-flex justify-content-center loader">
+				<div class="spinner-border" role="status">
+					<span class="sr-only">Loading...</span>
+				</div>
+			</div>
+			
+			<div class="col-xs-12 col-sm-6 col-md-4 food-item" *ngFor="let restaurant of restaurants">
+				<div class="food-item-wrap">
+					<div class="figure-wrap bg-image" [style.background-image]="'url('+restaurant.image_url+')'">
+						<div class="rating pull-left">
+							<app-ratings [ratings]="restaurant.ratings"></app-ratings>
+						</div>
+						<div class="review pull-right" *ngIf="restaurant.ratings_count"><a [routerLink]="" i18n="@@homePopularReviewCount">{{restaurant.ratings_count}} reviews</a> </div>
+					</div>
+					<div class="content">
+						<h5 class="restaurant_name"><a [routerLink]="['/profile', restaurant.id]">{{ restaurant.name }}</a></h5>
+						<div class="product-name address">{{ restaurant.address }}</div>
+						<div class="price-btn-block"> <span class="price"></span> <a [routerLink]="['/profile', restaurant.id]" class="btn theme-btn-dash" i18n="@@homePopularOrderNow">Order Now</a> </div>
+					</div>
+					<div class="restaurant-block">
+						<div class="left w-100">
+							<div class="row align-items-start details text-center pb-1">
+								<div class="col-4">
+									<div class="pull-left right-text mx-0"> <a [routerLink]="" i18n="@@homePopularAverageDeliver">Avg. Dellivery</a> <span>{{ restaurant.delivery_time }} mins.</span> </div>
+								</div>
+								<div class="col-4">
+									<div class="pull-left right-text mx-0"> <a [routerLink]="" i18n="@@homePopularMinimumOrder">Min. Order</a> <span>{{currency}} {{restaurant.minimum_order}}</span> </div>
+								</div>
+								<div class="col-4">
+									<div class="pull-left right-text mx-0"> <a [routerLink]="" i18n="@@homePopularDeliveryFee">Delivery Fee</a> <span>{{currency}} 50</span> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
