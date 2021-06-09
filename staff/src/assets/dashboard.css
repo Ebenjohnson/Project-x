@@ -1,0 +1,381 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
+@import url('fabl.css');
+
+.header-user-dropdown {
+    padding: 20px;
+    height: 80px;
+    color: #ffffff;
+    box-sizing: border-box;
+    margin-bottom: 100px;
+    background-color: #4385cf;
+}
+
+.header-user-dropdown .header-limiter {
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Logo */
+
+.header-user-dropdown .header-limiter h1{
+    float: left;
+    font: normal 28px Cookie, Arial, Helvetica, sans-serif;
+    line-height: 40px;
+    margin:0;
+}
+
+.header-user-dropdown .header-limiter h1 span {
+    color: #bc40df;
+}
+
+/* The header links */
+
+.header-user-dropdown .header-limiter a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.header-user-dropdown .header-limiter nav{
+    font:16px Arial, Helvetica, sans-serif;
+    line-height: 40px;
+    float: left;
+    margin: 0 0 0 60px;
+    padding: 0;
+}
+
+.header-user-dropdown .header-limiter nav a{
+    font-size: 14px;
+    display: inline-block;
+    padding: 0 12px;
+    opacity: 0.9;
+    position: relative;
+    text-decoration:none;
+    line-height: 1;
+}
+
+.header-user-dropdown .header-limiter nav a:hover {
+    opacity: 1;
+}
+
+/* The "new" badge */
+
+.header-user-dropdown .header-limiter nav a span {
+    position: absolute;
+    top: -12px;
+    border-radius: 2px;
+    background-color: #2A6A92;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    height: 13px;
+    font-size: 11px;
+    right: -15px;
+    padding: 1px 4px 0;
+}
+
+/* The user menu */
+
+.header-user-dropdown .header-limiter .header-user-menu{
+    position: relative;
+    float:right;
+    height:40px;
+    border-radius:2px;
+    display: flex;
+}
+
+.header-user-dropdown .header-limiter .header-user-menu:before{
+    content:'';
+    width:0;
+    height:0;
+    top: 18px;
+    left: 15px;
+    position:absolute;
+    border:5px solid transparent;
+    border-top-color:#fff;
+}
+
+.header-user-dropdown .header-limiter .header-user-menu ul{
+    display: none;
+    font:bold 13px Arial, Helvetica, sans-serif;
+    background-color: inherit;
+    list-style: none;
+    position: absolute;
+    text-align: center;
+    width: 125px;
+    top: 25px;
+    right: 0;
+    padding: 10px;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.header-user-dropdown .header-user-menu:active ul,
+.header-user-dropdown .header-user-menu:hover ul,
+.header-user-dropdown .header-user-menu.show ul{
+    display:block;
+}
+
+.header-user-dropdown .header-user-menu ul li{
+    padding:5px;
+}
+
+.header-user-dropdown .header-user-menu ul li a:hover{
+    opacity:0.9;
+}
+
+.header-user-dropdown .header-user-menu ul li a.highlight{
+    color:#e9ac09;
+}
+
+.header-user-dropdown .header-user-menu img{
+    border-radius:50%;
+    position:absolute;
+    top:6px;
+    max-width: 28px;
+    right:10px;
+}
+
+
+@media all and (max-width: 800px) {
+
+    .header-user-dropdown .header-limiter h1 {
+        font-size: 24px;
+    }
+
+    .header-user-dropdown .header-limiter nav a {
+        padding: 0 5px;
+    }
+
+    .header-user-dropdown .header-limiter nav {
+        margin-left: 20px;
+    }
+
+}
+
+@media all and (max-width: 600px) {
+
+    .header-user-dropdown .header-limiter nav {
+        display: none;
+    }
+
+}
+
+.homepage{
+    width: 100%;
+    margin: 0;
+    height: 250px;
+    background: url('images/bg_1.jpg');
+    background-size: cover;
+    overflow: hidden;
+}
+
+.highlight {
+    padding-left: 10px;
+}
+.highlight button{
+    background: none;
+    border: none;
+   margin-left: 20px;
+    background-color: #0a7bcb;
+    padding: 8px;
+    border-radius: 6px;
+    color: #fff;
+
+}
+
+.card{
+    width: 100%;
+    height: 200px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dash__title{
+    color: #fff;
+    padding-left: 20px;
+    font-family: Poppins;
+}
+
+.box-content{
+    width: 500px;
+    margin-top: -50px;
+    min-height: 250px;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 5px;
+    border-bottom: 1px solid #ccc;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-box-shadow: 0px 8px 20px -14px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 8px 20px -14px rgba(0,0,0,0.75);
+    box-shadow: 0px 8px 20px -14px rgba(0,0,0,0.75);
+}
+
+.box-content form{
+
+}
+
+.box-content  h3, .box-content  h5{
+    text-align: center;
+    color: #000;
+    padding-top: 20px;
+    font-family: Poppins;
+    font-weight: 300;
+    text-align: center;
+}
+
+
+
+.__btn{
+    border: none;
+    background: none;
+    background: #4278c1;
+    padding: 10px 0;
+    width: 150px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.success__icon{
+    width: 180px;
+    height: 180px;
+    line-height: 210px;
+    text-align: center;
+    border-radius: 50%;
+    background: #4278c1;
+    margin: 0 auto 0;
+    color: #fff;
+}
+.success__icon i {
+    font-weight: 100;
+    font-size: 50px;
+}
+
+.step__head, .step__head__inv{
+    width: 100%;
+    height: 200px;
+    background: url("images/book.jpg");
+    background-size: cover;
+}
+
+.step__head__inv{
+    background: url("images/inv.jpg");
+}
+
+.step__list{
+    margin: 10px;
+}
+.step__list .step__list__service{
+    display: flex;
+    padding-top: 15px;
+    float: right;
+    text-align: right;
+}
+
+.step__list__price{
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Poppins;
+}
+
+.step__list__add{
+    width: 20px;
+    height: 20px;
+    line-height: 18px;
+    text-align: center;
+    border: 2px solid #101010;
+    font-size: 12px;
+    border-radius: 3px;
+    font-weight: 100;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.setting__links{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    background: none;
+    text-transform: uppercase;
+}
+
+.__big__box{
+    width: 1000px;
+}
+
+.box__header{
+    display: flex;
+    padding-bottom:  20px;
+}
+
+.__title{
+    text-align: right;
+    margin-left: 20px;
+    font-family: Poppins;
+    font-weight: 200;
+    text-transform: uppercase;
+}
+.__closed{
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background: #d3d3d3;
+    border-radius: 50px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+.__closed i{
+    font-weight: 100;
+    color: #2e2e2e;
+}
+
+.box__body{
+    border-top: 1px solid #ccc;
+    padding: 10px;
+}
+.avatar__user{
+    width: 150px;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.custom__input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc ;
+    background: #f6f6f6;
+    height: 45px;
+    margin-bottom: 10px;
+    outline: none;
+    transition: all ease-in-out .5s;
+}
+.custom__input:focus{
+    border-bottom: 1px solid #0a7bcb;
+}
+
+.__pay__card {
+    text-align: center;
+}
+.__pay__card i{
+    font-size: 60px;
+}
+.__pay__card i.fa-cc-visa:hover{
+    color: #0a7bcb;
+    transition: all ease-in-out .5s;
+}
+
+.__pay__card i.fa-cc-mastercard:hover{
+    color: #f23232;
+    transition: all ease-in-out .5s;
+}
+
+.about__ava__box{
+    text-align: center;
+}
+
+.__trending{
+
+}
